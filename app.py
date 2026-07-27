@@ -105,7 +105,7 @@ user_details = """user details: given below:
 Give Python Developer Resume"""
 
 query = final_prompt + user_details
-if st.button("Generate Resume")
+if st.button("Generate Resume"):
  with st.spinner("running agent..."):
     response = agent.invoke({'messages':[{'role':'user','content':query}]})
     code = response['messages'][-1].content[-1]['text']
