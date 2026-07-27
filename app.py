@@ -8,7 +8,7 @@ st.markdown("""## user can create or download
 AI created resume based on high ATS 
 score""")
 # step 2: load modules
-import IPython as ip
+
 import os
 import time
 import langchain
@@ -81,6 +81,7 @@ def prompt_generator(agent = agent):
     f.write(response.content[-1]['text'])
   return "Prompt file generated Successfully, agent can read it"
 
+prompt_generator(model)
 # tool 2:
 def resume_maker_prompt():
   """This function just gives
@@ -108,4 +109,5 @@ if st.button("Generate Resume")
  with st.spinner("running agent..."):
     response = agent.invoke({'messages':[{'role':'user','content':query}]})
     code = response['messages'][-1].content[-1]['text']
-
+#st.markdown(code)
+st.html(code, width="stretch", unsafe_allow_javascript=True)
